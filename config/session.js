@@ -33,7 +33,7 @@ module.exports.session = {
   // pass: <redis auth password>
   // prefix: 'sess:'
   adapter: 'redis',
-  url: process.env.REDISTOGO_URL,
+  url: process.env.REDISTOGO_URL
 
   // Uncomment the following lines to use your Mongo adapter as a session store
   // adapter: 'mongo',
