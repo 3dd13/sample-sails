@@ -54,11 +54,10 @@ module.exports = {
     mobile_phone_number: {
       type: 'string'
     },
-  },
-
-  toJSON: function() {
-    var obj = this.toObject();
-    delete obj.encrypted_password;
-    return obj;
+    toJSON: function() {
+      var obj = this.toObject();
+      delete obj.encrypted_password;
+      return obj;
+    }
   }
 };
