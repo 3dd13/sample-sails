@@ -50,7 +50,10 @@ module.exports.sockets = {
   // adapter: 'memory',
 
   adapter: 'redis',
-  url: process.env.REDISTOGO_URL,
+  host: process.env.REDIS_HOST,
+  port: process.env.REDIS_PORT,
+  db: process.env.REDIS_DB,
+  pass: process.env.REDIS_PASS,
 
   // Node.js (and consequently Sails.js) apps scale horizontally.
   // It's a powerful, efficient approach, but it involves a tiny bit of planning.
