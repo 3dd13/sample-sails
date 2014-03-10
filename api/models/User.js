@@ -11,31 +11,6 @@ module.exports = {
   tableName: 'users',
   migrate: 'safe',
 
-  attributes: {
-    email: {
-      type: 'string',
-      required: true,
-      unique: true
-    },
-    encrypted_password: {
-      type: 'string',
-      required: true
-    },
-    name: {
-      type: 'string',
-      required: true
-    },
-    mobile_phone_number: {
-      type: 'string'
-    },
-  },
-
-  toJSON: function() {
-    var obj = this.toObject();
-    delete obj.encrypted_password;
-    return obj;
-  },
-
   beforeCreate: function(user, cb) {
     console.log("before create");
     console.log(user.password);
@@ -60,6 +35,30 @@ module.exports = {
         }
       });
     });
-  }
+  },
 
+  attributes: {
+    email: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
+    encrypted_password: {
+      type: 'string',
+      required: true
+    },
+    name: {
+      type: 'string',
+      required: true
+    },
+    mobile_phone_number: {
+      type: 'string'
+    },
+  },
+
+  toJSON: function() {
+    var obj = this.toObject();
+    delete obj.encrypted_password;
+    return obj;
+  }
 };

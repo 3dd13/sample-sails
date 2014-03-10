@@ -22,6 +22,9 @@ module.exports = {
   },
 
   create: function(req,res) {
+    console.log("user controller created");
+    console.log(req.params.all());
+
     User.create( req.params.all(), function userCreated(err, user) {
       console.log("user created");
       console.log(err);
