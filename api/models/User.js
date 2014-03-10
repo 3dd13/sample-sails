@@ -8,6 +8,8 @@
 var bcrypt = require('bcrypt')
 
 module.exports = {
+  tableName: 'users',
+  migrate: 'safe',
 
   attributes: {
     email: {

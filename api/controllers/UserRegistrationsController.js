@@ -23,7 +23,13 @@ module.exports = {
 
   create: function(req,res) {
     User.create( req.params.all(), function userCreated(err, user) {
+      console.log("user created");
+      console.log(err);
+      console.log(user);
       if (err) {
+        req.session.flash = {
+          err: err
+        }
         res.view("users/registrations/new");
         return;
       } else {
