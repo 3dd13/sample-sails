@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%- title %></title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <!--
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `link` tags, or asynchronously
+        on the client using a solution like AMD (RequireJS).  Or, if you like, you can
+        take advantage of Sails' boilerplate asset management.
+
+        By default, stylesheets from your `assets/linker/styles` folder are included
+        here automatically.  Both CSS (.css) and LESS (.less) are supported.
+        In production, your styles will be minified and concatenated into a single file.
+
+        To customize any part of the built-in behavior, just edit your Gruntfile.
+        For example, here are a few things you could do:
+
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/linker/styles/uikit.flat.css">
+    <!--STYLES END-->
+  </head>
+
+  <body>
+    <div class="uk-container uk-container-center uk-margin-large-bottom">
+      <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+        <a class="uk-navbar-brand uk-hidden-small" href="#">Empower</a>
+        <ul class="uk-navbar-nav uk-hidden-small uk-navbar-flip">
+            <li class="uk-active">
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Learning Path</a>
+            </li>
+            <li>
+                <a href="#">Contact Us</a>
+            </li>
+            <% if (req.isAuthenticated()) { %>
+            <li>
+              <form action="/users/sessions" id="form-logout" method="POST">
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="_csrf" value="<%= _csrf %>">
+              </form>
+              <a onclick="$('#form-logout').submit(); return false;">Logout</a>
+            </li>
+            <% } else { %>
+            <li>
+                <a href="/users/sessions/new">Login</a>
+            </li>
+            <% } %>
+            <li>
+                <a href="#">中文</a>
+            </li>
+        </ul>
+        <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
+        <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Empower</div>
+      </nav>
+
+      <% if (session.flash && session.flash.err) { %>
+        <ul class="alert">
+          <% Object.keys(session.flash.err).forEach(function(error) { %>
+            <li><%- JSON.stringify(session.flash.err(error)) %></li>
+          <%  }) %>
+        </ul>
+      <% } %>
+
+      <%- body %>
+
+      <hr class="uk-grid-divider">
+
+      <footer class="uk-grid" id="footer" data-uk-grid-margin>
+          <div class="uk-width-medium-1-1">
+              <div class="uk-panel uk-text-center">
+                  <p>Empower Education is powered by <strong><a href="http://www.42la.bs">42 Labs Limited</a></strong><a class="uk-button uk-button-primary uk-margin-left uk-button-small" href="#">Contact Us</a></p>
+              </div>
+          </div>
+      </footer>
+    </div>
+
+    <!--
+        Client-side Templates
+        ========================
+
+        HTML templates are important prerequisites of modern, rich client applications.
+        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+        that you load these templates client-side.
+
+        By default, your Gruntfile is configured to automatically load and precompile
+        client-side JST templates in your `assets/linker/templates` folder, then
+        include them here automatically.
+
+        To customize this behavior to fit your needs, just edit your Gruntfile.
+        For example, here are a few things you could do:
+
+            + Import templates from other directories
+            + Use a different template engine (handlebars, jade, dust, etc.)
+            + Internationalize your templates using a server-side stringfile
+              before they're served.
+    -->
+
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+
+    <!--
+
+      Client-side Javascript
+      ========================
+
+      You can always bring in JS files manually with `script` tags, or asynchronously
+      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
+      take advantage of Sails' boilerplate asset management.
+
+      By default, filesin your `assets/linker/js` folder are included here
+      automatically.  Both JavaScript (.js) and CoffeeScript (.coffee) are supported.
+      In production, your scripts will be minified and concatenated into a single file.
+
+      To customize any part of the built-in behavior, just edit your Gruntfile.
+      For example, here are a few things you could do:
+
+          + Change the order of your scripts
+          + Import scripts from other directories
+          + Use a different preprocessor, like TypeScript
+
+    -->
+
+    <!--SCRIPTS-->
+    <script src="/linker/js/socket.io.js"></script>
+    <script src="/linker/js/sails.io.js"></script>
+    <script src="/linker/js/app.js"></script>
+    <script src="/linker/js/jquery-1.11.0.min.js"></script>
+    <script src="/linker/js/uikit.js"></script>
+    <!--SCRIPTS END-->
+  </body>
+</html>

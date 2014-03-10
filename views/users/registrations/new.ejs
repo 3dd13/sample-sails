@@ -1,0 +1,26 @@
+<div class="uk-width-1-3 uk-container-center uk-panel-box">
+  <form action="/users/registrations" method="POST" class="form-sign-up uk-form uk-form-horizontal uk-margin-large-top">
+    <input type="hidden" name="_csrf" placeholder="<%=  _csrf %>">
+    <div class="uk-form-row">
+      <input type="text" name="name" placeholder="Name" class="uk-form-width-large uk-form-large">
+    </div>
+
+    <div class="uk-form-row">
+      <input type="email" name="email" placeholder="Email" class="uk-form-width-large uk-form-large">
+    </div>
+
+    <div class="uk-form-row">
+      <input type="password" name="password" placeholder="Password" class="uk-form-width-large uk-form-large">
+    </div>
+
+    <div class="uk-form-row">
+      <button type="submit" name="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Register</button>
+    </div>
+  </form>
+
+  <div class="uk-margin-large-top uk-text-center">
+    <p>
+      Have account already ? <a href="/users/sessions/new">Login</a>
+    </p>
+  </div>
+</div>
