@@ -71,7 +71,7 @@
       <% if (session.flash && session.flash.err) { %>
         <ul class="alert">
           <% Object.keys(session.flash.err).forEach(function(error) { %>
-            <li><%- JSON.stringify(session.flash.err(error)) %></li>
+            <li><%- JSON.stringify(session.flash.err[error]) %></li>
           <%  }) %>
         </ul>
       <% } %>
@@ -111,7 +111,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+
     <!--TEMPLATES END-->
 
 

@@ -37,11 +37,14 @@ module.exports = {
   },
 
   beforeCreate: function(user, cb) {
+    console.log("before create");
+    console.log(user.password);
+
     if (!user.password) {
       return next({err: ["Password cannot be blank"]})
     }
 
-    console.log("before create");
+    console.log("before create 22");
     console.log(user.password);
     bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(user.password, salt, function(err, hash) {
