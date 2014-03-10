@@ -44,6 +44,7 @@ module.exports.adapters = {
     postgres: {
       module   : 'sails-postgresql',
       url      : process.env.DATABASE_URL,
+      ssl      : true,
       schema   : true //This makes sure that sails matches
                    //the database schema to your models.
     }
